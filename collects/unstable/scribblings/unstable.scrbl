@@ -90,11 +90,13 @@ Keep documentation and tests up to date.
 @include-section["sequence.scrbl"]
 @include-section["hash.scrbl"]
 @include-section["match.scrbl"]
+@include-section["port.scrbl"]
 @include-section["skip-list.scrbl"]
 @include-section["interval-map.scrbl"]
 @include-section["generics.scrbl"]
 @include-section["markparam.scrbl"]
 @include-section["debug.scrbl"]
+@include-section["byte-counting-port.scrbl"]
 
 @;{--------}
 
