@@ -15,6 +15,10 @@ Contract for non-empty strings.
 Equivalent to @racket[(between/c 1 65535)].
 }
 
+@defthing[tcp-listen-port? contract?]{
+Equivalent to @racket[(between/c 0 65535)].
+}
+
 @defthing[path-element? contract?]{
 Equivalent to @racket[(or/c path-string? (symbols 'up 'same))].
 }
@@ -41,6 +45,14 @@ Note that the following contract is @bold{not} equivalent:
   @racketblock[(or/c (-> any) any/c) (code:comment "wrong!")]
 The last contract is the same as @racket[any/c] because
 @racket[or/c] tries flat contracts before higher-order contracts.
+}
+
+@defthing[failure-result/c contract?]{
+
+A contract that describes the failure result arguments of procedures
+such as @racket[hash-ref].
+
+Equivalent to @racket[(if/c procedure? (-> any) any/c)].
 }
 
 @defproc[(rename-contract [contract contract?]
