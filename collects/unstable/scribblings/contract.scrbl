@@ -7,12 +7,29 @@
 
 @unstable-header[]
 
-@defthing[non-empty-string/c contract?]{
-Contract for non-empty strings.
+@deftogether[[
+@defproc[(non-empty-string? [x any/c]) boolean?]
+@defproc[(non-empty-list? [x any/c]) boolean?]
+@defproc[(non-empty-bytes? [x any/c]) boolean?]
+@defproc[(non-empty-vector? [x any/c]) boolean?]]]{
+
+Returns @racket[#t] if @racket[x] is of the appropriate data type
+(string, list, bytes, or vector, respectively) and is not empty;
+returns @racket[#f] otherwise.
+}
+
+@defproc[(singleton-list? [x any/c]) boolean?]{
+
+Returns @racket[#t] if @racket[x] is a list of one element; returns
+@racket[#f] otherwise.
 }
 
 @defthing[port-number? contract?]{
 Equivalent to @racket[(between/c 1 65535)].
+}
+
+@defthing[tcp-listen-port? contract?]{
+Equivalent to @racket[(between/c 0 65535)].
 }
 
 @defthing[path-element? contract?]{
@@ -41,6 +58,14 @@ Note that the following contract is @bold{not} equivalent:
   @racketblock[(or/c (-> any) any/c) (code:comment "wrong!")]
 The last contract is the same as @racket[any/c] because
 @racket[or/c] tries flat contracts before higher-order contracts.
+}
+
+@defthing[failure-result/c contract?]{
+
+A contract that describes the failure result arguments of procedures
+such as @racket[hash-ref].
+
+Equivalent to @racket[(if/c procedure? (-> any) any/c)].
 }
 
 @defproc[(rename-contract [contract contract?]
@@ -197,3 +222,27 @@ immutable dictionaries (which may be passed through a constructor that involves
 efficient than the original dictionaries.
 
 }
+
+@addition[@author+email["Jay McCarthy" "jay@racket-lang.org"]]
+
+@defproc[(dynamic/c [pre contract?] [dynamic (parameter/c contract?)] [post contract?])
+         contract?]{
+Returns a contract that applies the @racket[pre] contract, then the contract dynamically bound to the @racket[dynamic] parameter, then the @racket[post] contract.
+}
+                   
+@defproc[(coerce/c [coerce (-> any/c any/c)])
+         contract?]{
+Returns a contract that applies @racket[coerce] to all values and blames the positive party if @racket[coerce] returns false. This is a light-weight way to create a contract from a simple projection.
+}
+                                    
+@defexamples[
+#:eval (eval/require 'racket/contract 'unstable/contract)
+       
+(define p (make-parameter any/c))
+(define c (dynamic/c string? p number?))
+
+(contract c "123" 'pos 'neg)
+
+(p (coerce/c string->number))
+(contract c "123" 'pos 'neg)
+(contract c "123a" 'pos 'neg)]

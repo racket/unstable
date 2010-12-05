@@ -86,12 +86,12 @@ Keep documentation and tests up to date.
 @include-section["planet.scrbl"]
 @include-section["port.scrbl"]
 @include-section["pretty.scrbl"]
-@include-section["queue.scrbl"]
 @include-section["regexp.scrbl"]
 @include-section["require.scrbl"]
 @include-section["sandbox.scrbl"]
 @include-section["scribble.scrbl"]
 @include-section["set.scrbl"]
+@include-section["sexp-diff.scrbl"]
 @include-section["srcloc.scrbl"]
 @include-section["string.scrbl"]
 @include-section["struct.scrbl"]
@@ -107,12 +107,11 @@ Keep documentation and tests up to date.
 @include-section["sequence.scrbl"]
 @include-section["hash.scrbl"]
 @include-section["match.scrbl"]
-@include-section["skip-list.scrbl"]
-@include-section["interval-map.scrbl"]
 @include-section["generics.scrbl"]
 @include-section["markparam.scrbl"]
 @include-section["debug.scrbl"]
-@include-section["byte-counting-port.scrbl"]
+@include-section["wrapc.scrbl"]
+@include-section["prop-contract.scrbl"]
 
 @;{--------}
 
