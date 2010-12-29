@@ -7,12 +7,29 @@
 
 @unstable-header[]
 
-@defthing[non-empty-string/c contract?]{
-Contract for non-empty strings.
+@deftogether[[
+@defproc[(non-empty-string? [x any/c]) boolean?]
+@defproc[(non-empty-list? [x any/c]) boolean?]
+@defproc[(non-empty-bytes? [x any/c]) boolean?]
+@defproc[(non-empty-vector? [x any/c]) boolean?]]]{
+
+Returns @racket[#t] if @racket[x] is of the appropriate data type
+(string, list, bytes, or vector, respectively) and is not empty;
+returns @racket[#f] otherwise.
+}
+
+@defproc[(singleton-list? [x any/c]) boolean?]{
+
+Returns @racket[#t] if @racket[x] is a list of one element; returns
+@racket[#f] otherwise.
 }
 
 @defthing[port-number? contract?]{
 Equivalent to @racket[(between/c 1 65535)].
+}
+
+@defthing[tcp-listen-port? contract?]{
+Equivalent to @racket[(between/c 0 65535)].
 }
 
 @defthing[path-element? contract?]{
@@ -41,6 +58,14 @@ Note that the following contract is @bold{not} equivalent:
   @racketblock[(or/c (-> any) any/c) (code:comment "wrong!")]
 The last contract is the same as @racket[any/c] because
 @racket[or/c] tries flat contracts before higher-order contracts.
+}
+
+@defthing[failure-result/c contract?]{
+
+A contract that describes the failure result arguments of procedures
+such as @racket[hash-ref].
+
+Equivalent to @racket[(if/c procedure? (-> any) any/c)].
 }
 
 @defproc[(rename-contract [contract contract?]
