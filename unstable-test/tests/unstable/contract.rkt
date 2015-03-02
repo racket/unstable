@@ -14,34 +14,6 @@
        (test-ok ([with/c predicate/c integer?] 1))
        (test-ok ([with/c predicate/c integer?] 1/2))
        (test-bad ([with/c predicate/c values] 'x))))
-   (test-suite "Collection Contracts"
-     (test-suite "sequence/c"
-       (test-ok
-        (for ([x (with/c (sequence/c integer?) (list 1 2 3 4))])
-          (void)))
-       (test-bad
-        (for ([x (with/c (sequence/c integer?) (list 1 2 'c 4))])
-          (void)))
-       (test-bad
-        (for ([x (with/c (sequence/c integer? symbol?) (list 1 2 3 4))])
-          (void)))
-       (test-ok
-         (for ([(x y) (with/c (sequence/c integer? symbol?)
-                              (in-dict (list (cons 1 'one) (cons 2 'two))))])
-           (void)))
-       (test-bad
-         (for ([(x y) (with/c (sequence/c integer? symbol?)
-                              (in-dict (list (cons 1 'one) (cons 2 "two"))))])
-           (void)))
-       (test-bad
-         (for ([(x y) (with/c (sequence/c integer?)
-                              (in-dict (list (cons 1 'one) (cons 2 'two))))])
-           (void)))
-       (let ([s (sequence->stream (contract (sequence/c #:min-count 2 any/c) "x" 'pos 'neg))])
-         (check-equal? (stream-first s) #\x)
-         (check-exn (λ (x) (and (exn:fail? x)
-                                (regexp-match #rx"blaming: pos" (exn-message x))))
-                    (lambda () (stream-first (stream-rest s)))))))
    (test-suite "Data structure contracts"
      (test-suite "maybe/c"
        (test-true "flat" (flat-contract? (maybe/c number?)))
