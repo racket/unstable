@@ -212,7 +212,7 @@ See @seclink["Keyboard Shortcuts" #:doc '(lib "scribblings/drracket/drracket.scr
 
 @defmodule[unstable/2d/tabular]
 
-@defform/subs[(2dmatch tabular-content)
+@defform/subs[(2dtabular tabular-content)
                                            
               ([tabular-content (code:line tabular-row
                                            ⋮)
