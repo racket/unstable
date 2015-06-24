@@ -6,6 +6,7 @@
                "draw-lib"
                "gui-lib"
                "pict-lib"
+               "ppict"
                "scribble-lib"
                "slideshow-lib"
                "unstable-macro-testing-lib"))

@@ -452,57 +452,6 @@ Blurs @racket[bitmap] using blur radii @racket[h-radius] and
 }
 
 
-@subsection{Tagged Picts}
-
-@defproc[(tag-pict [p pict?] [tag symbol?]) pict?]{
-
-Returns a pict like @racket[p] that carries a symbolic tag. The tag
-can be used with @racket[find-tag] to locate the pict.
-}
-
-@defproc[(find-tag [p pict?] [find tag-path?])
-         (or/c pict-path? #f)]{
-
-Locates a sub-pict of @racket[p]. Returns a pict-path that can be used
-with functions like @racket[lt-find], etc.
-
-@examples[#:eval the-eval
-(let* ([a (tag-pict (red (disk 20)) 'a)]
-       [b (tag-pict (blue (filled-rectangle 20 20)) 'b)]
-       [p (vl-append a (hb-append (blank 100) b))])
-  (pin-arrow-line 10 p
-                  (find-tag p 'a) rb-find
-                  (find-tag p 'b) lt-find))
-]
-}
-
-@defproc[(find-tag* [p pict?] [find tag-path?])
-         (listof pict-path?)]{
-
-Like @racket[find-tag], but returns all pict-paths corresponding to
-the given tag-path.
-
-@examples[#:eval the-eval
-(let* ([a (lambda () (tag-pict (red (disk 20)) 'a))]
-       [b (lambda () (tag-pict (blue (filled-rectangle 20 20)) 'b))]
-       [as (vc-append 10 (a) (a) (a))]
-       [bs (vc-append 10 (b) (b) (b))]
-       [p (hc-append as (blank 60 0) bs)])
-  (for*/fold ([p p])
-      ([apath (in-list (find-tag* p 'a))]
-       [bpath (in-list (find-tag* p 'b))])
-    (pin-arrow-line 4 p
-                    apath rc-find
-                    bpath lc-find)))
-]
-}
-
-@defproc[(tag-path? [x any/c]) boolean?]{
-
-Returns @racket[#t] if @racket[x] is a symbol or a non-empty list of
-symbols, @racket[#f] otherwise.
-}
-
 @section{Shadow Frames}
 
 @defproc[(shadow-frame [pict pict?] ...
@@ -595,25 +544,6 @@ Adds a background highlighted with @racket[color] to
 ]}
 
 @(close-eval the-eval)
-
-@section{Alignment}
-
-@(require (for-label unstable/gui/pict/align))
-@defmodule[unstable/gui/pict/align]
-
-@defthing[align/c contract?]{A contract for the values @racket['(lt ct rt lc cc rc lb cb rb)].}
-@defthing[halign/c contract?]{A contract for the values @racket['(l c r)].}
-@defthing[valign/c contract?]{A contract for the values @racket['(t c b)].}
-
-@defproc[(align->h [a align/c]) halign/c]{Extracts the @racket[halign/c] part from @racket[a].}
-@defproc[(align->v [a align/c]) valign/c]{Extracts the @racket[valign/c] part from @racket[a].}
-
-@defproc[(align->frac [a (or/c halign/c valign/c)]) real?]{Computes the fraction corresponding to an alignment where the top-left is @racket[0].}
-
-@defproc[(halign->vcompose [ha halign/c]) procedure?]{Returns the @racket[h*-append] function for horizontal alignment.}
-@defproc[(valign->hcompose [va valign/c]) procedure?]{Returns the @racket[v*-append] function for vertical alignment.}
-
-@defproc[(pin-over/align [scene pict?] [x real?] [y real?] [halign halign/c] [valign valign/c] [pict pict?]) pict?]{Pins @racket[pict] over @racket[scene] centered at @racket[x]x@racket[y] aligned as specified in @racket[halign] and @racket[valign].}
 
 @section{PLT Logos}
 
