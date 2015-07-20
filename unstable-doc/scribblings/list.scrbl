@@ -7,7 +7,11 @@
 @(the-eval '(require unstable/list))
 
 @title[#:tag "list"]{Lists}
-@unstable-header[]
+
+@deprecated[@racketmodname[racket/list]]{
+The contents of this module, with the exceptions below, have been merged with
+@racketmodname[racket/list].
+}
 
 @defmodule[unstable/list]
 
@@ -39,6 +43,8 @@ Extends @racket[l2] to be as long as @racket[l1] by adding @racket[(-
                      ...)
          (values (listof B_1) ... (listof B_n))]{
 
+@deprecated[@racket[for/lists]]{}
+
 Produces lists of the respective values of @racket[f] applied to the elements in
 @racket[lst ...] sequentially.
 
@@ -55,6 +61,8 @@ Produces lists of the respective values of @racket[f] applied to the elements in
 
 @defproc[(map2 [f (-> A ... (values B C))] [lst (listof A)] ...)
          (values (listof B) (listof C))]{
+
+@deprecated[@racket[for/lists]]{}
 
 Produces a pair of lists of the respective values of @racket[f] applied to the
 elements in @racket[lst ...] sequentially.
