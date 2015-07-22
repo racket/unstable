@@ -6,7 +6,8 @@
 @(the-eval '(require racket/class racket/match unstable/match))
 
 @title[#:tag "match"]{Match}
-@unstable-header[]
+
+@deprecated[@racketmodname[racket/match]]{}
 
 @defmodule[unstable/match]
 
