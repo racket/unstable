@@ -4,7 +4,7 @@
          racket/contract/base
          racket/class
          racket/draw
-         unstable/future
+         racket/future
          pict)
 
 (define nneg-real/c (and/c real? (not/c negative?)))
