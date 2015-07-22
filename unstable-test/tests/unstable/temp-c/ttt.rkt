@@ -136,8 +136,7 @@
          board board-ref board-set)
         (not os-turn?))])))
 
-(require unstable/match
-         unstable/temp-c/dsl)
+(require unstable/temp-c/dsl)
 (provide
  (rename-out [tic-tac-toe
               tic-tac-toe:raw]))

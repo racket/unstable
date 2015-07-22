@@ -25,7 +25,7 @@
              (listof any/c))]))
 
 (module qdsl-sort racket
-  (require unstable/temp-c/dsl (submod ".." raw-sort) unstable/match)
+  (require unstable/temp-c/dsl (submod ".." raw-sort))
   (provide make-sort)
   (define (make-sort)
     (contract

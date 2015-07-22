@@ -85,7 +85,6 @@
 (test (test-spec MallocFreeSpecNQ good) =error> "disallowed" 
       (test-spec MallocFreeSpecNQ bad) =error> "disallowed")
 
-(require unstable/match)
 (define MallocFreeSpecQ
   (with-monitor 
       (cons/c (label 'malloc (-> addr?))

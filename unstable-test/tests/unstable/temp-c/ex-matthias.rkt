@@ -1,7 +1,6 @@
 #lang racket/load
 (module a racket
-  (require unstable/temp-c/dsl
-           unstable/match)
+  (require unstable/temp-c/dsl)
   
   (define memory%
     (class object%

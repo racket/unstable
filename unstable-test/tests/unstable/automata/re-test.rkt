@@ -2,7 +2,6 @@
 (require unstable/automata/machine
          unstable/automata/re
          unstable/automata/re-ext
-         unstable/match
          tests/eli-tester)
 
 (define-syntax-rule (test-re* R (succ ...) (fail ...))

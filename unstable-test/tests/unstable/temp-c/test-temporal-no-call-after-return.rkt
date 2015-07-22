@@ -16,8 +16,7 @@ admin --------------------------------------------------------> player
 ;; -----------------------------------------------------------------------------
 ;; the interface module, defines turn% and how player is called via take-turn 
 (module player-admin-interface racket 
-  (require unstable/temp-c/dsl
-           unstable/match)
+  (require unstable/temp-c/dsl)
   
   (define turn%
     (class object% 
