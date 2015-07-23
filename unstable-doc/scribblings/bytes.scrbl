@@ -4,7 +4,7 @@
                      racket/contract))
 
 @title[#:tag "bytes"]{Bytes}
-@unstable-header[]
+@deprecated[@racketmodname[racket/bytes]]{}
 
 @defmodule[unstable/bytes]
 
