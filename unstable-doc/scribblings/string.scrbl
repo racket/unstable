@@ -7,7 +7,7 @@
                      racket/base))
 
 @title[#:tag "string"]{Strings}
-@unstable-header[]
+@deprecated[@racketmodname[racket/string]]{}
 
 @defmodule[unstable/string]
 
