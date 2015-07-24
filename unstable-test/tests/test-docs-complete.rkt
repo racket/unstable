@@ -7,7 +7,6 @@
 (check-docs (quote unstable/sequence))
 (check-docs (quote unstable/pretty))
 (check-docs (quote unstable/match))
-(check-docs (quote unstable/markparam) #:skip #rx"^deserialize-info:")
 ; (check-docs (quote unstable/list)) re-exports stuff
 (check-docs (quote unstable/find))
 (check-docs (quote unstable/debug))
