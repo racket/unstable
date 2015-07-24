@@ -5,6 +5,7 @@
 (define deps '("base"
                "draw-lib"
                "gui-lib"
+               "markparam-lib"
                "pict-lib"
                "ppict"
                "scribble-lib"
