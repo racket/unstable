@@ -77,7 +77,7 @@ Keep documentation and tests up to date.
   Add new documentation links to the list immediately below.
 }
 
-@include-section["../automata/scribblings/automata.scrbl"]
+@include-section["automata.scrbl"]
 @include-section["bytes.scrbl"]
 @include-section["contract.scrbl"]
 @include-section["wrapc.scrbl"]

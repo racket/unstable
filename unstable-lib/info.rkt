@@ -2,7 +2,8 @@
 
 (define collection "unstable")
 
-(define deps '("base"
+(define deps '("automata-lib"
+               "base"
                "draw-lib"
                "gui-lib"
                "markparam-lib"
