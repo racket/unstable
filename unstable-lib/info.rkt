@@ -11,6 +11,7 @@
                "ppict"
                "scribble-lib"
                "slideshow-lib"
+               "temp-c-lib"
                "unstable-macro-testing-lib"))
 (define implies '("unstable-macro-testing-lib"))
 (define build-deps '("rackunit-lib"))
