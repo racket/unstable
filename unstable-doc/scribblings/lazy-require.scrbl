@@ -7,7 +7,10 @@
                      compiler/cm-accomplice))
 
 @title[#:tag "lazy-require"]{Lazy Require}
-@unstable[@author+email["Ryan Culpepper" "ryanc@racket-lang.org"]]
+@deprecated[@racketmodname[racket/lazy-require]]{
+The contents of this module, with the exception below, have been merged with
+@racketmodname[racket/lazy-require].
+}
 
 @defmodule[unstable/lazy-require]
 
