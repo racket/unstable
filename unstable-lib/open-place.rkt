@@ -2,4 +2,4 @@
 
 ;; Re-exports from `racket/place`, for backwards compatibility.
 (require racket/place)
-(provide open-place)
+(provide (rename-out place/context open-place))
