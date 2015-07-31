@@ -3,7 +3,7 @@
 (define collection "unstable")
 
 (define deps '("automata-lib"
-               "base"
+               ("base" #:version "6.2.900.6")
                "draw-lib"
                "gui-lib"
                "markparam-lib"
