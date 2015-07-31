@@ -72,31 +72,4 @@ Performs @racket[(length (syntax->list stx))].
 (syntax-length #'(d e f))]
 }
 
-@addition[@author+email["Carl Eastlund" "cce@racket-lang.org"]]
-
-@section{Syntax Object Source Locations}
-
-@deftogether[(
-@defproc[(syntax-source-directory [stx syntax?]) (or/c path? #f)]
-@defproc[(syntax-source-file-name [stx syntax?]) (or/c path? #f)]
-)]{
-
-These produce the directory and file name, respectively, of the path with which
-@racket[stx] is associated, or @racket[#f] if @racket[stx] is not associated
-with a path.
-
-@defexamples[
-#:eval the-eval
-(define loc
-  (list (build-path "/tmp" "dir" "somewhere.rkt")
-        #f #f #f #f))
-(define stx1 (datum->syntax #f 'somewhere loc))
-(syntax-source-directory stx1)
-(syntax-source-file-name stx1)
-(define stx2 (datum->syntax #f 'nowhere #f))
-(syntax-source-directory stx2)
-(syntax-source-directory stx2)
-]
-}
-
 @close-eval[the-eval]
