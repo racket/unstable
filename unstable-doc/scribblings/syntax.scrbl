@@ -7,6 +7,12 @@
 @(the-eval '(require unstable/syntax (for-syntax racket/base unstable/syntax)))
 
 @title[#:tag "syntax"]{Syntax}
+
+@deprecated[@elem{@racketmodname[syntax/location] or @racketmodname[syntax/transformer]}]{
+The contents of this module, with the exceptions below, have been merged with
+@racketmodname[syntax/location] and @racketmodname[syntax/transformer].
+}
+
 @unstable[@author+email["Ryan Culpepper" "ryanc@racket-lang.org"]]
 
 @defmodule[unstable/syntax]
