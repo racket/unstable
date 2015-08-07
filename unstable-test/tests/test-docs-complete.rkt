@@ -3,7 +3,7 @@
 ; (check-docs (quote unstable/syntax)) re-exports stuff
 (check-docs (quote unstable/struct))
 (check-docs (quote unstable/string))
-(check-docs (quote unstable/sequence))
+; (check-docs (quote unstable/sequence)) re-exports stuff
 (check-docs (quote unstable/pretty))
 (check-docs (quote unstable/match))
 ; (check-docs (quote unstable/list)) re-exports stuff
