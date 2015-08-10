@@ -14,4 +14,7 @@
   (check-equal? (for/list ([x (in-sequence-forever (in-range 5) 5)]
                            [y (in-range 10)])
                   x)
-                '(0 1 2 3 4 5 5 5 5 5))))
+                '(0 1 2 3 4 5 5 5 5 5))
+  (check-equal? (for/list ([(x y) (in-pairs '((1 . 1) (2 . 2) (3 . 3)))])
+                  (+ x y))
+                '(2 4 6))))

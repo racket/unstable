@@ -28,3 +28,14 @@
                (λ (_) (more?))
                (λ _ #t)
                (λ _ #t))))))
+
+(define (in-pairs seq)
+  (make-do-sequence
+   (λ ()
+     (let-values ([(more? gen) (sequence-generate seq)])
+       (values (λ (e) (let ([e (gen)]) (values (car e) (cdr e))))
+               (λ (_) #t)
+               #t
+               (λ (_) (more?))
+               (λ _ #t)
+               (λ _ #t))))))

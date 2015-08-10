@@ -13,6 +13,11 @@ The contents of this module, with the exceptions below, have been merged with
 
 @defmodule[unstable/sequence]
 
+@defproc[(in-pairs [seq sequence?]) sequence?]{
+Produces a sequence equivalent to
+ @racket[(in-parallel (sequence-lift car seq) (sequence-lift cdr seq))].
+}
+
 @defproc[(in-sequence-forever [seq sequence?] [val any/c]) sequence?]{
 Produces a sequence whose values are the elements of @racket[seq], followed by @racket[val] repeated.
 }
