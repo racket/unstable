@@ -31,7 +31,11 @@
                      "gui-doc"
                      "pict-doc"
                      "scribble-doc"
-                     "slideshow-doc"))
+                     "slideshow-doc"
+                     "class-iop-doc"
+                     "automata-doc"
+                     "markparam-doc"
+                     "temp-c-doc"))
 (define update-implies '("unstable-lib"))
 
 (define pkg-desc "documentation part of \"unstable\"")
