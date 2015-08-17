@@ -115,4 +115,4 @@ can be appended to the end of a base error message.
 
 @defproc[(exn:not-break? [x any/c]) boolean?]{Identifies values that are not @racket[exn:break?], i.e. values that are safe to catch with @racket[with-handlers].}
 
-@defproc[(error-display [x any/c]) void?]{Calls @racket[(error-display-handler)] with the proper arguments whehter @racket[x] is an exception, or not.}
+@defproc[(error-display [x any/c]) void?]{Calls @racket[(error-display-handler)] with the proper arguments whether @racket[x] is an exception, or not.}
