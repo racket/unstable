@@ -1,7 +1,7 @@
 #lang racket/base
 (require rackunit/docs-complete)
 ; (check-docs (quote unstable/syntax)) re-exports stuff
-(check-docs (quote unstable/struct))
+; (check-docs (quote unstable/struct)) re-exports stuff
 (check-docs (quote unstable/string))
 ; (check-docs (quote unstable/sequence)) re-exports stuff
 (check-docs (quote unstable/pretty))
