@@ -103,4 +103,19 @@ Identifies values that meet the contract @racket[elem-contract], lists of such v
                  (number-tree? '(4 . 5))]
 }
 
+@addition{@author+email["Alex Knauth" "alexander@knauth.org"]}
+
+@defproc[(list*/c [v/c contract?] ... [tail/c contract?]) contract?]{
+Creates a contract for lists or improper lists starting with values
+matching each @racket[v/c] contract followed by the rest of the
+list/improper-list matching @racket[tail/c].
+@examples[#:eval the-eval
+  (define num-num-syms/c (list*/c number? number? (listof symbol?)))
+  (flat-contract? num-num-syms/c)
+  (num-num-syms/c (list 1 2 'hello 'there))
+  (num-num-syms/c (list 1 2))
+  (num-num-syms/c (list 3 4 'hi "I am not a symbol!"))
+  (num-num-syms/c (list 6 'Well-Im-not-a-number))
+]}
+
 @(close-eval the-eval)
