@@ -8,6 +8,7 @@
                      racket/future
                      pict
                      pict/color
+                     pict/conditional
                      unstable/contract
                      unstable/gui/pict))
 
@@ -124,88 +125,14 @@ Shades @racket[pict] to show with @racket[ratio] of its normal opacity; if
 
 @subsection{Conditional Combinations}
 
-These pict control flow operators decide which pict of several to use.  All
-branches are evaluated; the resulting pict is a combination of the pict chosen
-by normal conditional flow with @racket[ghost] applied to all the other picts.
-The result is a picture large enough to accommodate each alternative, but showing
-only the chosen one.  This is useful for staged slides, as the pict chosen may
-change with each slide but its size and position will not.
-
-@defform/subs[(pict-if maybe-combine test-expr then-expr else-expr)
-              ([maybe-combine code:blank (code:line #:combine combine-expr)])]{
-
-Chooses either @racket[then-expr] or @racket[else-expr] based on
-@racket[test-expr], similarly to @racket[if].  Combines the chosen, visible
-image with the other, invisible image using @racket[combine-expr], defaulting to
-@racket[pict-combine].
-
-@examples[#:eval the-eval
-(let ([f (lambda (x)
-           (pict-if x
-                    (disk 20)
-                    (disk 40)))])
-  (hc-append 10
-             (frame (f #t))
-             (frame (f #f))))
-]
-}
-
-@defform/subs[(pict-cond maybe-combine [test-expr pict-expr] ...)
-              ([maybe-combine code:blank (code:line #:combine combine-expr)])]{
-
-Chooses a @racket[pict-expr] based on the first successful @racket[test-expr],
-similarly to @racket[cond].  Combines the chosen, visible image with the other,
-invisible images using @racket[combine-expr], defaulting to
-@racket[pict-combine].
-
-@examples[#:eval the-eval
-(let ([f (lambda (x)
-           (pict-cond
-             [(eq? x 'circle) (circle 20)]
-             [(eq? x 'disk) (disk 40)]
-             [(eq? x 'text) (text "ok" null 20)]))])
-  (hc-append 10
-             (frame (f 'circle))
-             (frame (f 'disk))
-             (frame (f 'text))))
-]
-}
-
-@defform/subs[(pict-case test-expr maybe-combine [literals pict-expr] ...)
-              ([maybe-combine code:blank (code:line #:combine combine-expr)])]{
-
-Chooses a @racket[pict-expr] based on @racket[test-expr] and each list of
-@racket[literals], similarly to @racket[case].  Combines the chosen, visible
-image with the other, invisible images using @racket[combine-expr], defaulting
-to @racket[pict-combine].
-
-@examples[#:eval the-eval
-(let ([f (lambda (x)
-           (pict-case x
-             [(circle) (circle 20)]
-             [(disk) (disk 40)]
-             [(text) (text "ok" null 20)]))])
-  (hc-append 10
-             (frame (f 'circle))
-             (frame (f 'disk))
-             (frame (f 'text))))
-]
-}
-
-@defform/subs[(pict-match test-expr maybe-combine [pattern pict-expr] ...)
-              ([maybe-combine code:blank (code:line #:combine combine-expr)])]{
-
-Chooses a @racket[pict-expr] based on @racket[test-expr] and each
-@racket[pattern], similarly to @racket[match].  Combines the chosen, visible
-image with the other, invisible images using @racket[combine-expr], defaulting
-to @racket[pict-combine].
-
-}
+These bindings provide additional control over the combinations in
+@racketmodname[pict/conditional].
 
 @defform[#:id pict-combine pict-combine]{
 
 This syntax parameter determines the default pict combining form used by the
-above macros.  It defaults to @racket[lbl-superimpose].
+combinaitons in @racketmodname[pict/conditional].
+It defaults to @racket[lbl-superimpose].
 }
 
 @defform[(with-pict-combine combine-id body ...)]{
