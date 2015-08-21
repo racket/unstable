@@ -15,7 +15,10 @@
 @(the-eval '(require racket/math pict unstable/gui/pict))
 
 @title[#:tag "pict"]{Pict Utilities}
-@unstable[@author+email["Carl Eastlund" "cce@racket-lang.org"]]
+@deprecated[@racketmodname[pict]]{
+The contents of this module, with the exceptions below, have been merged with
+the @racketmodname[pict] collection, or its subcollections.
+}
 
 @defmodule[unstable/gui/pict]
 
