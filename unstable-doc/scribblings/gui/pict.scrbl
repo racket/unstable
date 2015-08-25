@@ -87,17 +87,6 @@ for staged slides, as the resulting pict always has the same size and shape, and
 its contents always appear at the same position, but changing the boolean
 argument between slides can control when the transformation occurs.
 
-@deftogether[(
-@defproc[(show [pict pict?] [show? truth/c #t]) pict?]
-@defproc[(hide [pict pict?] [hide? truth/c #t]) pict?]
-)]{
-
-These functions conditionally show or hide an image, essentially choosing
-between @racket[pict] and @racket[(ghost pict)].  The only difference between
-the two is the default behavior and the opposite meaning of the @racket[show?]
-and @racket[hide?] booleans.  Both functions are provided for mnemonic purposes.
-}
-
 @defproc[(strike [pict pict?] [strike? truth/c #t]) pict?]{
 
 Displays a strikethrough image by putting a line through the middle of
