@@ -162,8 +162,7 @@
 (define (rectangle/border w h
                           #:color [color #f]
                           #:border-color [border-color "black"]
-                          #:border-width [border-width 2]
-                          #:corner-radius [corner-radius -0.25])
+                          #:border-width [border-width 2])
   (define dc-path (new dc-path%))
   (send dc-path rectangle 0 0 w h)
   (draw-shape/border dc-path color border-color border-width))
