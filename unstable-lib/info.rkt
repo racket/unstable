@@ -7,7 +7,7 @@
                ("draw-lib" #:version "1.7")
                "gui-lib"
                "markparam-lib"
-               "pict-lib"
+               ("pict-lib" #:version "1.4")
                "ppict"
                "scribble-lib"
                "slideshow-lib"
