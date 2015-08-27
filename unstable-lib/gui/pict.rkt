@@ -5,8 +5,9 @@
          racket/splicing racket/stxparam racket/draw
          racket/block racket/class
          (for-syntax racket/base)
-         "private/blur.rkt")
-(provide (all-from-out "private/blur.rkt")
+         pict/shadow (submod pict/shadow unstable))
+(provide (all-from-out pict/shadow)
+         (all-from-out (submod pict/shadow unstable))
          (all-from-out ppict/tag))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -344,35 +345,6 @@
          (send dc set-pen old-pen))
        (pict-width pict)
        (pict-height pict))))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;;  Shadow frame
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(require "private/shframe.rkt")
-
-(provide/contract
- [shadow-frame
-  (->* ()
-       (#:background-color (or/c string? (is-a?/c color%))
-        #:frame-color (or/c string? (is-a?/c color%))
-        #:frame-line-width (or/c real? #f)
-        #:shadow-side-length real?
-        #:shadow-top-y-offset real?
-        #:shadow-bottom-y-offset real?
-        #:shadow-descent (and/c real? (not/c negative?))
-        #:shadow-alpha-factor real?
-        #:blur (and/c real? (not/c negative?))
-        #:margin real?
-        #:sep real?)
-       #:rest (listof pict?)
-       pict?)]
- [arch
-  (-> real? real? real? real?
-      pict?)])
-
 ;; draw
 
 (define (draw-pict-centered p dc aw ah)
