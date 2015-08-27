@@ -143,6 +143,16 @@ Sets @racket[pict-combine] to refer to @racket[combine-id] within each of the
 ]
 }
 
+@defform/subs[(pict-match test-expr maybe-combine [pattern pict-expr] ...)
+              ([maybe-combine code:blank (code:line #:combine combine-expr)])]{
+
+Chooses a @racket[pict-expr] based on @racket[test-expr] and each
+@racket[pattern], similarly to @racket[match].  Combines the chosen, visible
+image with the other, invisible images using @racket[combine-expr], defaulting
+to @racket[lbl-superimpose].
+
+}
+
 @section{Shapes with Borders}
 
 @addition{Vincent St-Amour}

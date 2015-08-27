@@ -45,6 +45,23 @@
 
 (require pict/conditional ; for re-export
          (submod pict/conditional params))
+
+;; unlike with match, pattern variables are not bound in the rhss (and can't be)
+;; so left in unstable, instead of moving to pict/conditional like the others
+;; pointed out by ryanc
+(define-syntax (pict-match stx)
+  (syntax-case stx ()
+    [(_ test #:combine combine [pattern expr] ...)
+     (with-syntax ([(pict ...) (generate-temporaries #'(expr ...))])
+       (syntax/loc stx
+         (let ([pict expr] ...)
+           (combine (match test [pattern pict] ... [_ (blank 0 0)])
+                    (ghost pict) ...))))]
+    [(_ test [pattern expr] ...)
+     (quasisyntax/loc stx
+       (pict-match test #:combine #,(syntax-parameter-value #'pict-combine)
+                   [pattern expr] ...))]))
+
 (provide hide show
          pict-if pict-cond pict-case pict-match
          pict-combine with-pict-combine)
