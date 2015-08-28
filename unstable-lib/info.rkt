@@ -10,7 +10,7 @@
                ("pict-lib" #:version "1.4")
                "ppict"
                "scribble-lib"
-               "slideshow-lib"
+               ("slideshow-lib" #:version "1.2")
                "temp-c-lib"
                "unstable-macro-testing-lib"
                "unix-socket-lib"))
