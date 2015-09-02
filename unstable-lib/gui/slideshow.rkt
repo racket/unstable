@@ -1,12 +1,14 @@
 #lang racket/base
 (require slideshow/base pict
          slideshow/text ; for re-export
+         slideshow/staged-slide ; for re-export
          racket/contract/base racket/list racket/match
          racket/stxparam
          (for-syntax racket/base racket/list racket/set syntax/parse)
          "pict.rkt")
 (provide (all-from-out "pict.rkt")
-         (all-from-out slideshow/text))
+         (all-from-out slideshow/text)
+         slide/staged) ; re-export
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -98,17 +100,6 @@
                 #:valign (->* [] [] #:rest (listof pict?) pict?)]
                #:rest (matrixof (or/c string? pict?))
                pict?)])
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;;  Slide Staging
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(define-syntax-rule (slide/staged [name ...] body ...)
-  (staged [name ...] (slide body ...)))
-
-(provide slide/staged)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;

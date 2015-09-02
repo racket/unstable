@@ -13,7 +13,8 @@
                ("slideshow-lib" #:version "1.2")
                "temp-c-lib"
                "unstable-macro-testing-lib"
-               "unix-socket-lib"))
+               "unix-socket-lib"
+               "staged-slide"))
 (define implies '("unstable-macro-testing-lib"))
 (define build-deps '("rackunit-lib"))
 

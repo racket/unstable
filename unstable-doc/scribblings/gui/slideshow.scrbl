@@ -9,6 +9,8 @@
 @deprecated[@racketmodname[slideshow]]{
 The contents of this module, with the exceptions below, have been merged with
 the @racketmodname[slideshow] collection, or its subcollections.
+They are either available from the @tt{slideshow-lib} package or the
+@tt{staged-slide} package.
 }
 
 @defmodule[unstable/gui/slideshow]
@@ -72,42 +74,6 @@ Sets @racket[current-para-width] to @racket[width] during execution of the
 Computes the width of one column out of @racket[n] that takes up a ratio of
 @racket[r] of the available space (according to @racket[current-para-width]).
 
-}
-
-@section{Staged Slides}
-
-@defform[(staged [name ...] body ...)]{
-
-Executes the @racket[body] terms once for each stage @racket[name].  The terms
-may include expressions and mutually recursive definitions.  Within the body,
-each @racket[name] is bound to a number from @racket[1] to the number of stages
-in order.  Furthermore, during execution @racket[stage] is bound to the number
-of the current stage and @racket[stage-name] is bound to a symbol representing
-the @racket[name] of the current stage.  By comparing @racket[stage] to the
-numeric value of each @racket[name], or @racket[stage-name] to quoted symbols of
-the form @racket['name], the user may compute based on the progression of the
-stages.
-}
-
-@deftogether[(
-@defform[#:id stage stage]
-@defform[#:id stage-name stage-name]
-)]{
-
-These keywords are bound during the execution of @racket[staged] and should not
-be used otherwise.
-}
-
-@defform[(slide/staged [name ...] arg ...)]{
-
-Creates a staged slide.  Equivalent to @racket[(staged [name ...] (slide arg
-...))].
-
-Within a staged slide, the boolean arguments to @racket[hide], @racket[show],
-@racket[strike], and @racket[shade] can be used to determine in which stages to
-perform a transformation.  The macros @racket[pict-if], @racket[pict-cond],
-@racket[pict-case], and @racket[pict-match] may also be used to create images
-which change naturally between stages.
 }
 
 @section{Revealing Slides}
