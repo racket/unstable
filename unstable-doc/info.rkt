@@ -36,7 +36,8 @@
                      "automata-doc"
                      "markparam-doc"
                      "temp-c-doc"
-                     "unix-socket-doc"))
+                     "unix-socket-doc"
+                     "2d-doc"))
 (define update-implies '("unstable-lib"))
 
 (define pkg-desc "documentation part of \"unstable\"")
