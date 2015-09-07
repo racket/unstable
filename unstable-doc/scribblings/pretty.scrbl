@@ -5,7 +5,7 @@
 @(the-eval '(require racket/pretty unstable/pretty))
 
 @title{Pretty-Printing}
-@unstable[@author+email["Carl Eastlund" "cce@racket-lang.org"]]
+@deprecated[@racketmodname[racket/pretty]]{}
 
 @defmodule[unstable/pretty]
 
