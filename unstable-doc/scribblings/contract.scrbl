@@ -5,15 +5,12 @@
 @(the-eval '(require racket/contract racket/dict unstable/contract))
 
 @title[#:tag "contract"]{Contracts}
-@unstable-header[]
+@deprecated[@racketmodname[racket/contract]]{
+The contents of this module, with the exceptions below, have been merged with
+@racketmodname[racket/contract].
+}
 
 @defmodule[unstable/contract]
-
-@defproc[(non-empty-string? [x any/c]) boolean?]{
-
-Returns @racket[#t] if @racket[x] is a string and is not empty;
-returns @racket[#f] otherwise.
-}
 
 @defthing[port-number? contract?]{
 Equivalent to @racket[(between/c 1 65535)].
