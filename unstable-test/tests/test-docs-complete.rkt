@@ -9,5 +9,5 @@
 ; (check-docs (quote unstable/list)) re-exports stuff
 (check-docs (quote unstable/find))
 (check-docs (quote unstable/debug))
-(check-docs (quote unstable/contract))
+; (check-docs (quote unstable/contract)) re-exports stuff
 (check-docs (quote unstable/bytes))

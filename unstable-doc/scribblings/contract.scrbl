@@ -12,14 +12,6 @@ The contents of this module, with the exceptions below, have been merged with
 
 @defmodule[unstable/contract]
 
-@defthing[port-number? contract?]{
-Equivalent to @racket[(between/c 1 65535)].
-}
-
-@defthing[tcp-listen-port? contract?]{
-Equivalent to @racket[(between/c 0 65535)].
-}
-
 @defthing[path-piece? contract?]{
 Equivalent to @racket[(or/c path-string? (symbols 'up 'same))].
 }
