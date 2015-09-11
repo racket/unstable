@@ -5,7 +5,7 @@
 (define deps '("automata-lib"
                ("base" #:version "6.2.900.6")
                ("draw-lib" #:version "1.7")
-               "gui-lib"
+               ("gui-lib" #:version "1.18")
                "markparam-lib"
                ("pict-lib" #:version "1.4")
                "ppict"
