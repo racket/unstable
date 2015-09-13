@@ -21,3 +21,5 @@
 (define pkg-desc "implementation (no documentation) part of \"unstable\"")
 
 (define pkg-authors '(jay samth cce ryanc))
+
+(define version "0.1")
