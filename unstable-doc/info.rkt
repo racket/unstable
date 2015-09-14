@@ -37,7 +37,8 @@
                      "markparam-doc"
                      "temp-c-doc"
                      "unix-socket-doc"
-                     "2d-doc"))
+                     "2d-doc"
+                     "option-contract-doc"))
 (define update-implies '("unstable-lib"))
 
 (define pkg-desc "documentation part of \"unstable\"")
