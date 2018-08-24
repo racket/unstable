@@ -3,4 +3,4 @@
 @title{Automata}
 @defmodule[unstable/automata]
 
-@deprecated[@racketmodname[automata]]{}
+@deprecated[@other-doc['(lib "automata/scribblings/automata.scrbl")]]{}
